@@ -62,17 +62,32 @@ const AdminDashboard: React.FC = () => {
         <label className="block text-sm font-medium mb-2">Başlık</label>
         <input
           type="text"
-          value={siteData.hero.title}
-          onChange={(e) => updateHero({ title: e.target.value })}
-          className="w-full p-3 border rounded-lg"
+          value={siteData.hero.title.tr}
+          onChange={(e) => updateHero({ title: { ...siteData.hero.title, tr: e.target.value } })}
+          className="w-full p-3 border rounded-lg bg-white text-gray-900 placeholder-gray-400"
+          placeholder="Türkçe başlık"
+        />
+        <input
+          type="text"
+          value={siteData.hero.title.en}
+          onChange={(e) => updateHero({ title: { ...siteData.hero.title, en: e.target.value } })}
+          className="w-full p-3 border rounded-lg mt-2 bg-white text-gray-900 placeholder-gray-400"
+          placeholder="İngilizce başlık"
         />
       </div>
       <div>
         <label className="block text-sm font-medium mb-2">Alt Başlık</label>
         <textarea
-          value={siteData.hero.subtitle}
-          onChange={(e) => updateHero({ subtitle: e.target.value })}
-          className="w-full p-3 border rounded-lg h-32"
+          value={siteData.hero.subtitle.tr}
+          onChange={(e) => updateHero({ subtitle: { ...siteData.hero.subtitle, tr: e.target.value } })}
+          className="w-full p-3 border rounded-lg h-32 bg-white text-gray-900 placeholder-gray-400"
+          placeholder="Türkçe alt başlık"
+        />
+        <textarea
+          value={siteData.hero.subtitle.en}
+          onChange={(e) => updateHero({ subtitle: { ...siteData.hero.subtitle, en: e.target.value } })}
+          className="w-full p-3 border rounded-lg h-32 mt-2 bg-white text-gray-900 placeholder-gray-400"
+          placeholder="İngilizce alt başlık"
         />
       </div>
       <button
@@ -91,33 +106,62 @@ const AdminDashboard: React.FC = () => {
         <label className="block text-sm font-medium mb-2">Başlık</label>
         <input
           type="text"
-          value={siteData.about.title}
-          onChange={(e) => updateAbout({ title: e.target.value })}
-          className="w-full p-3 border rounded-lg"
+          value={siteData.about.title.tr}
+          onChange={(e) => updateAbout({ title: { ...siteData.about.title, tr: e.target.value } })}
+          className="w-full p-3 border rounded-lg bg-white text-gray-900 placeholder-gray-400"
+          placeholder="Türkçe başlık"
+        />
+        <input
+          type="text"
+          value={siteData.about.title.en}
+          onChange={(e) => updateAbout({ title: { ...siteData.about.title, en: e.target.value } })}
+          className="w-full p-3 border rounded-lg mt-2 bg-white text-gray-900 placeholder-gray-400"
+          placeholder="İngilizce başlık"
         />
       </div>
       <div>
         <label className="block text-sm font-medium mb-2">Açıklama</label>
         <textarea
-          value={siteData.about.description}
-          onChange={(e) => updateAbout({ description: e.target.value })}
-          className="w-full p-3 border rounded-lg h-32"
+          value={siteData.about.description.tr}
+          onChange={(e) => updateAbout({ description: { ...siteData.about.description, tr: e.target.value } })}
+          className="w-full p-3 border rounded-lg h-32 bg-white text-gray-900 placeholder-gray-400"
+          placeholder="Türkçe açıklama"
+        />
+        <textarea
+          value={siteData.about.description.en}
+          onChange={(e) => updateAbout({ description: { ...siteData.about.description, en: e.target.value } })}
+          className="w-full p-3 border rounded-lg h-32 mt-2 bg-white text-gray-900 placeholder-gray-400"
+          placeholder="İngilizce açıklama"
         />
       </div>
       <div>
         <label className="block text-sm font-medium mb-2">Misyon</label>
         <textarea
-          value={siteData.about.mission}
-          onChange={(e) => updateAbout({ mission: e.target.value })}
-          className="w-full p-3 border rounded-lg h-24"
+          value={siteData.about.mission.tr}
+          onChange={(e) => updateAbout({ mission: { ...siteData.about.mission, tr: e.target.value } })}
+          className="w-full p-3 border rounded-lg h-24 bg-white text-gray-900 placeholder-gray-400"
+          placeholder="Türkçe misyon"
+        />
+        <textarea
+          value={siteData.about.mission.en}
+          onChange={(e) => updateAbout({ mission: { ...siteData.about.mission, en: e.target.value } })}
+          className="w-full p-3 border rounded-lg h-24 mt-2 bg-white text-gray-900 placeholder-gray-400"
+          placeholder="İngilizce misyon"
         />
       </div>
       <div>
         <label className="block text-sm font-medium mb-2">Vizyon</label>
         <textarea
-          value={siteData.about.vision}
-          onChange={(e) => updateAbout({ vision: e.target.value })}
-          className="w-full p-3 border rounded-lg h-24"
+          value={siteData.about.vision.tr}
+          onChange={(e) => updateAbout({ vision: { ...siteData.about.vision, tr: e.target.value } })}
+          className="w-full p-3 border rounded-lg h-24 bg-white text-gray-900 placeholder-gray-400"
+          placeholder="Türkçe vizyon"
+        />
+        <textarea
+          value={siteData.about.vision.en}
+          onChange={(e) => updateAbout({ vision: { ...siteData.about.vision, en: e.target.value } })}
+          className="w-full p-3 border rounded-lg h-24 mt-2 bg-white text-gray-900 placeholder-gray-400"
+          placeholder="İngilizce vizyon"
         />
       </div>
       <button
@@ -134,10 +178,10 @@ const AdminDashboard: React.FC = () => {
     const addService = () => {
       const newService: Service = {
         id: `service-${Date.now()}`,
-        title: 'Yeni Hizmet',
-        description: 'Hizmet açıklaması',
+        title: { tr: 'Yeni Hizmet', en: 'New Service' },
+        description: { tr: 'Hizmet açıklaması', en: 'Service description' },
         icon: '🔧',
-        features: ['Özellik 1', 'Özellik 2']
+        features: { tr: ['Özellik 1', 'Özellik 2'], en: ['Feature 1', 'Feature 2'] }
       };
       const newServices = [...services, newService];
       setServices(newServices);
@@ -178,22 +222,35 @@ const AdminDashboard: React.FC = () => {
                 <div className="space-y-4">
                   <input
                     type="text"
-                    value={editingService.title}
-                    onChange={(e) => setEditingService({...editingService, title: e.target.value})}
-                    className="w-full p-2 border rounded"
-                    placeholder="Hizmet başlığı"
+                    value={editingService.title.tr}
+                    onChange={(e) => setEditingService({...editingService, title: { ...editingService.title, tr: e.target.value }})}
+                    className="w-full p-2 border rounded bg-white text-gray-900 placeholder-gray-400"
+                    placeholder="Türkçe hizmet başlığı"
+                  />
+                  <input
+                    type="text"
+                    value={editingService.title.en}
+                    onChange={(e) => setEditingService({...editingService, title: { ...editingService.title, en: e.target.value }})}
+                    className="w-full p-2 border rounded mt-2 bg-white text-gray-900 placeholder-gray-400"
+                    placeholder="İngilizce hizmet başlığı"
                   />
                   <textarea
-                    value={editingService.description}
-                    onChange={(e) => setEditingService({...editingService, description: e.target.value})}
-                    className="w-full p-2 border rounded h-20"
-                    placeholder="Hizmet açıklaması"
+                    value={editingService.description.tr}
+                    onChange={(e) => setEditingService({...editingService, description: { ...editingService.description, tr: e.target.value }})}
+                    className="w-full p-2 border rounded h-20 bg-white text-gray-900 placeholder-gray-400"
+                    placeholder="Türkçe hizmet açıklaması"
+                  />
+                  <textarea
+                    value={editingService.description.en}
+                    onChange={(e) => setEditingService({...editingService, description: { ...editingService.description, en: e.target.value }})}
+                    className="w-full p-2 border rounded h-20 mt-2 bg-white text-gray-900 placeholder-gray-400"
+                    placeholder="İngilizce hizmet açıklaması"
                   />
                   <input
                     type="text"
                     value={editingService.icon}
                     onChange={(e) => setEditingService({...editingService, icon: e.target.value})}
-                    className="w-full p-2 border rounded"
+                    className="w-full p-2 border rounded bg-white text-gray-900 placeholder-gray-400"
                     placeholder="İkon (emoji)"
                   />
                   <div className="flex gap-2">
@@ -214,8 +271,8 @@ const AdminDashboard: React.FC = () => {
               ) : (
                 <div className="flex justify-between items-start">
                   <div>
-                    <h4 className="font-semibold">{service.icon} {service.title}</h4>
-                    <p className="text-gray-600 text-sm">{service.description}</p>
+                    <h4 className="font-semibold">{service.icon} {service.title.tr}</h4>
+                    <p className="text-gray-600 text-sm">{service.description.tr}</p>
                   </div>
                   <div className="flex gap-2">
                     <button
@@ -249,7 +306,7 @@ const AdminDashboard: React.FC = () => {
           type="text"
           value={siteData.contactInfo.phone}
           onChange={(e) => updateContactInfo({ phone: e.target.value })}
-          className="w-full p-3 border rounded-lg"
+          className="w-full p-3 border rounded-lg bg-white text-gray-900 placeholder-gray-400"
         />
       </div>
       <div>
@@ -258,25 +315,41 @@ const AdminDashboard: React.FC = () => {
           type="email"
           value={siteData.contactInfo.email}
           onChange={(e) => updateContactInfo({ email: e.target.value })}
-          className="w-full p-3 border rounded-lg"
+          className="w-full p-3 border rounded-lg bg-white text-gray-900 placeholder-gray-400"
         />
       </div>
       <div>
         <label className="block text-sm font-medium mb-2">Adres</label>
         <input
           type="text"
-          value={siteData.contactInfo.address}
-          onChange={(e) => updateContactInfo({ address: e.target.value })}
-          className="w-full p-3 border rounded-lg"
+          value={siteData.contactInfo.address.tr}
+          onChange={(e) => updateContactInfo({ address: { ...siteData.contactInfo.address, tr: e.target.value } })}
+          className="w-full p-3 border rounded-lg bg-white text-gray-900 placeholder-gray-400"
+          placeholder="Türkçe adres"
+        />
+        <input
+          type="text"
+          value={siteData.contactInfo.address.en}
+          onChange={(e) => updateContactInfo({ address: { ...siteData.contactInfo.address, en: e.target.value } })}
+          className="w-full p-3 border rounded-lg mt-2 bg-white text-gray-900 placeholder-gray-400"
+          placeholder="İngilizce adres"
         />
       </div>
       <div>
         <label className="block text-sm font-medium mb-2">Çalışma Saatleri</label>
         <input
           type="text"
-          value={siteData.contactInfo.workingHours}
-          onChange={(e) => updateContactInfo({ workingHours: e.target.value })}
-          className="w-full p-3 border rounded-lg"
+          value={siteData.contactInfo.workingHours.tr}
+          onChange={(e) => updateContactInfo({ workingHours: { ...siteData.contactInfo.workingHours, tr: e.target.value } })}
+          className="w-full p-3 border rounded-lg bg-white text-gray-900 placeholder-gray-400"
+          placeholder="Türkçe çalışma saatleri"
+        />
+        <input
+          type="text"
+          value={siteData.contactInfo.workingHours.en}
+          onChange={(e) => updateContactInfo({ workingHours: { ...siteData.contactInfo.workingHours, en: e.target.value } })}
+          className="w-full p-3 border rounded-lg mt-2 bg-white text-gray-900 placeholder-gray-400"
+          placeholder="İngilizce çalışma saatleri"
         />
       </div>
       <button
@@ -295,7 +368,7 @@ const AdminDashboard: React.FC = () => {
         id: `ref-${Date.now()}`,
         name: 'Yeni Referans',
         logo: '🏢',
-        sector: 'Sektör'
+        sector: { tr: 'Sektör', en: 'Sector' }
       };
       const newRefs = [...references, newRef];
       setReferences(newRefs);
@@ -338,22 +411,29 @@ const AdminDashboard: React.FC = () => {
                     type="text"
                     value={editingRef.name}
                     onChange={(e) => setEditingRef({...editingRef, name: e.target.value})}
-                    className="w-full p-2 border rounded"
+                    className="w-full p-2 border rounded bg-white text-gray-900 placeholder-gray-400"
                     placeholder="Şirket adı"
                   />
                   <input
                     type="text"
                     value={editingRef.logo}
                     onChange={(e) => setEditingRef({...editingRef, logo: e.target.value})}
-                    className="w-full p-2 border rounded"
+                    className="w-full p-2 border rounded bg-white text-gray-900 placeholder-gray-400"
                     placeholder="Logo (emoji)"
                   />
                   <input
                     type="text"
-                    value={editingRef.sector}
-                    onChange={(e) => setEditingRef({...editingRef, sector: e.target.value})}
-                    className="w-full p-2 border rounded"
-                    placeholder="Sektör"
+                    value={editingRef.sector.tr}
+                    onChange={(e) => setEditingRef({...editingRef, sector: { ...editingRef.sector, tr: e.target.value }})}
+                    className="w-full p-2 border rounded bg-white text-gray-900 placeholder-gray-400"
+                    placeholder="Türkçe sektör"
+                  />
+                  <input
+                    type="text"
+                    value={editingRef.sector.en}
+                    onChange={(e) => setEditingRef({...editingRef, sector: { ...editingRef.sector, en: e.target.value }})}
+                    className="w-full p-2 border rounded mt-2 bg-white text-gray-900 placeholder-gray-400"
+                    placeholder="İngilizce sektör"
                   />
                   <div className="flex gap-2">
                     <button
@@ -374,7 +454,7 @@ const AdminDashboard: React.FC = () => {
                 <div className="flex justify-between items-center">
                   <div>
                     <h4 className="font-semibold">{ref.logo} {ref.name}</h4>
-                    <p className="text-gray-600 text-sm">{ref.sector}</p>
+                    <p className="text-gray-600 text-sm">{ref.sector.tr}</p>
                   </div>
                   <div className="flex gap-2">
                     <button
@@ -408,31 +488,52 @@ const AdminDashboard: React.FC = () => {
           type="text"
           value={siteData.companyInfo.name}
           onChange={(e) => updateCompanyInfo({ name: e.target.value })}
-          className="w-full p-3 border rounded-lg"
+          className="w-full p-3 border rounded-lg bg-white text-gray-900 placeholder-gray-400"
         />
       </div>
       <div>
         <label className="block text-sm font-medium mb-2">Açıklama</label>
         <textarea
-          value={siteData.companyInfo.description}
-          onChange={(e) => updateCompanyInfo({ description: e.target.value })}
-          className="w-full p-3 border rounded-lg h-32"
+          value={siteData.companyInfo.description.tr}
+          onChange={(e) => updateCompanyInfo({ description: { ...siteData.companyInfo.description, tr: e.target.value } })}
+          className="w-full p-3 border rounded-lg h-32 bg-white text-gray-900 placeholder-gray-400"
+          placeholder="Türkçe açıklama"
+        />
+        <textarea
+          value={siteData.companyInfo.description.en}
+          onChange={(e) => updateCompanyInfo({ description: { ...siteData.companyInfo.description, en: e.target.value } })}
+          className="w-full p-3 border rounded-lg h-32 mt-2 bg-white text-gray-900 placeholder-gray-400"
+          placeholder="İngilizce açıklama"
         />
       </div>
       <div>
         <label className="block text-sm font-medium mb-2">Misyon</label>
         <textarea
-          value={siteData.companyInfo.mission}
-          onChange={(e) => updateCompanyInfo({ mission: e.target.value })}
-          className="w-full p-3 border rounded-lg h-24"
+          value={siteData.companyInfo.mission.tr}
+          onChange={(e) => updateCompanyInfo({ mission: { ...siteData.companyInfo.mission, tr: e.target.value } })}
+          className="w-full p-3 border rounded-lg h-24 bg-white text-gray-900 placeholder-gray-400"
+          placeholder="Türkçe misyon"
+        />
+        <textarea
+          value={siteData.companyInfo.mission.en}
+          onChange={(e) => updateCompanyInfo({ mission: { ...siteData.companyInfo.mission, en: e.target.value } })}
+          className="w-full p-3 border rounded-lg h-24 mt-2 bg-white text-gray-900 placeholder-gray-400"
+          placeholder="İngilizce misyon"
         />
       </div>
       <div>
         <label className="block text-sm font-medium mb-2">Vizyon</label>
         <textarea
-          value={siteData.companyInfo.vision}
-          onChange={(e) => updateCompanyInfo({ vision: e.target.value })}
-          className="w-full p-3 border rounded-lg h-24"
+          value={siteData.companyInfo.vision.tr}
+          onChange={(e) => updateCompanyInfo({ vision: { ...siteData.companyInfo.vision, tr: e.target.value } })}
+          className="w-full p-3 border rounded-lg h-24 bg-white text-gray-900 placeholder-gray-400"
+          placeholder="Türkçe vizyon"
+        />
+        <textarea
+          value={siteData.companyInfo.vision.en}
+          onChange={(e) => updateCompanyInfo({ vision: { ...siteData.companyInfo.vision, en: e.target.value } })}
+          className="w-full p-3 border rounded-lg h-24 mt-2 bg-white text-gray-900 placeholder-gray-400"
+          placeholder="İngilizce vizyon"
         />
       </div>
       <button

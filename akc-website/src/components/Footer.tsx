@@ -1,8 +1,10 @@
 import React from 'react';
 import { useSiteData } from '../context/SiteDataContext';
+import { useLanguage } from '../context/LanguageContext';
 
 const Footer = () => {
   const { siteData } = useSiteData();
+  const { language, t } = useLanguage();
   const currentYear = new Date().getFullYear();
 
   const scrollToTop = () => {
@@ -24,7 +26,7 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row items-center justify-center space-y-2 md:space-y-0 md:space-x-6">
             <div className="flex items-center text-lg font-bold">
               <span className="text-2xl mr-2">🚨</span>
-              ACİL DURUM HATTI - 7/24 HİZMET
+{t('footer.emergency.title')}
             </div>
             <a
               href={`tel:${siteData.contactInfo.phone}`}
@@ -52,8 +54,7 @@ const Footer = () => {
                 </div>
               </div>
               <p className="text-gray-300 mb-6 leading-relaxed text-lg">
-                30 yıllık deneyimimizle sigorta hasarlarında güvenilir çözüm ortağınız. 
-                Konut ve işyeri hasarlarında profesyonel onarım hizmetleri sunuyoruz.
+                {siteData.companyInfo.description[language]}
               </p>
               
               {/* Contact Info */}
@@ -65,7 +66,7 @@ const Footer = () => {
                     </svg>
                   </div>
                   <div>
-                    <div className="font-semibold">Telefon</div>
+                    <div className="font-semibold">{t('footer.contact.phone')}</div>
                                 <a href={`tel:${siteData.contactInfo.phone}`} className="text-orange-400 hover:text-orange-300">
               {siteData.contactInfo.phone}
             </a>
@@ -79,7 +80,7 @@ const Footer = () => {
                     </svg>
                   </div>
                   <div>
-                    <div className="font-semibold">E-posta</div>
+                    <div className="font-semibold">{t('footer.contact.email')}</div>
                                 <a href={`mailto:${siteData.contactInfo.email}`} className="text-blue-400 hover:text-blue-300">
               {siteData.contactInfo.email}
             </a>
@@ -94,8 +95,8 @@ const Footer = () => {
                     </svg>
                   </div>
                   <div>
-                    <div className="font-semibold">Adres</div>
-                    <div className="text-gray-300">{siteData.contactInfo.address}</div>
+                    <div className="font-semibold">{t('footer.contact.address')}</div>
+                    <div className="text-gray-300">{siteData.contactInfo.address[language]}</div>
                   </div>
                 </div>
               </div>
@@ -103,14 +104,14 @@ const Footer = () => {
 
             {/* Quick Links */}
             <div>
-              <h3 className="text-xl font-bold mb-6 text-orange-400">Hızlı Erişim</h3>
+              <h3 className="text-xl font-bold mb-6 text-orange-400">{t('footer.quickLinks.title')}</h3>
               <ul className="space-y-3">
                 <li>
                   <button
                     onClick={() => scrollToSection('home')}
                     className="text-gray-300 hover:text-orange-400 transition-colors"
                   >
-                    Ana Sayfa
+{t('nav.home')}
                   </button>
                 </li>
                 <li>
@@ -118,7 +119,7 @@ const Footer = () => {
                     onClick={() => scrollToSection('about')}
                     className="text-gray-300 hover:text-orange-400 transition-colors"
                   >
-                    Hakkımızda
+{t('nav.about')}
                   </button>
                 </li>
                 <li>
@@ -126,7 +127,7 @@ const Footer = () => {
                     onClick={() => scrollToSection('services')}
                     className="text-gray-300 hover:text-orange-400 transition-colors"
                   >
-                    Hizmetlerimiz
+{t('nav.services')}
                   </button>
                 </li>
                 <li>
@@ -134,7 +135,7 @@ const Footer = () => {
                     onClick={() => scrollToSection('references')}
                     className="text-gray-300 hover:text-orange-400 transition-colors"
                   >
-                    Referanslar
+{t('nav.references')}
                   </button>
                 </li>
                 <li>
@@ -142,7 +143,7 @@ const Footer = () => {
                     onClick={() => scrollToSection('contact')}
                     className="text-gray-300 hover:text-orange-400 transition-colors"
                   >
-                    İletişim
+{t('nav.contact')}
                   </button>
                 </li>
               </ul>
@@ -150,12 +151,12 @@ const Footer = () => {
 
             {/* Services */}
             <div>
-              <h3 className="text-xl font-bold mb-6 text-blue-400">Hizmetlerimiz</h3>
+              <h3 className="text-xl font-bold mb-6 text-blue-400">{t('nav.services')}</h3>
               <ul className="space-y-3">
                 {siteData.services.slice(0, 4).map((service: any) => (
                   <li key={service.id}>
                     <div className="text-gray-300 hover:text-blue-400 transition-colors cursor-pointer">
-                      {service.title}
+                      {service.title[language]}
                     </div>
                   </li>
                 ))}
@@ -166,7 +167,7 @@ const Footer = () => {
           {/* Certifications */}
           <div className="mt-16 pt-8 border-t border-gray-700">
             <div className="text-center">
-              <h3 className="text-xl font-bold mb-6 text-green-400">Sertifikalarımız & Üyeliklerimiz</h3>
+              <h3 className="text-xl font-bold mb-6 text-green-400">{t('footer.certifications.title')}</h3>
               <div className="flex flex-wrap justify-center items-center gap-8">
                 <div className="bg-gray-800 rounded-lg p-4 text-center">
                   <div className="text-2xl mb-2">🏆</div>
@@ -195,7 +196,7 @@ const Footer = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-gray-400 text-center md:text-left mb-4 md:mb-0">
-              © {currentYear} AKC Mekanik İnşaat. Tüm hakları saklıdır.
+              {t('footer.copyright').replace('{year}', currentYear.toString())}
             </div>
             <div className="flex items-center space-x-6">
               <button

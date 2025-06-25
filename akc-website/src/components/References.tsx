@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useSiteData } from '../context/SiteDataContext';
+import { useLanguage } from '../context/LanguageContext';
 
 const References = () => {
   const { siteData } = useSiteData();
+  const { language, t } = useLanguage();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -27,11 +29,11 @@ const References = () => {
         {/* Header */}
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Referanslarımız
+            {t('references.title')}
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-orange-500 to-blue-600 mx-auto mb-8"></div>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Türkiye'nin önde gelen firmalarına hizmet vermenin gururunu yaşıyoruz
+            {t('references.subtitle')}
           </p>
         </div>
 
@@ -48,7 +50,7 @@ const References = () => {
                   {reference.logo}
                 </div>
                 <h3 className="font-bold text-gray-900 text-lg mb-2">{reference.name}</h3>
-                <p className="text-gray-600 text-sm">{reference.sector}</p>
+                <p className="text-gray-600 text-sm">{reference.sector[language]}</p>
               </div>
             </div>
           ))}
@@ -58,19 +60,19 @@ const References = () => {
         <div className={`grid grid-cols-1 md:grid-cols-4 gap-8 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="text-center p-8 bg-white rounded-2xl shadow-lg">
             <div className="text-4xl font-bold text-orange-600 mb-2">50+</div>
-            <div className="text-gray-700 font-medium">Kurumsal Müşteri</div>
+            <div className="text-gray-700 font-medium">{t('references.stats.customers')}</div>
           </div>
           <div className="text-center p-8 bg-white rounded-2xl shadow-lg">
             <div className="text-4xl font-bold text-blue-600 mb-2">1000+</div>
-            <div className="text-gray-700 font-medium">Tamamlanan Proje</div>
+            <div className="text-gray-700 font-medium">{t('references.stats.projects')}</div>
           </div>
           <div className="text-center p-8 bg-white rounded-2xl shadow-lg">
             <div className="text-4xl font-bold text-green-600 mb-2">99%</div>
-            <div className="text-gray-700 font-medium">Müşteri Memnuniyeti</div>
+            <div className="text-gray-700 font-medium">{t('references.stats.satisfaction')}</div>
           </div>
           <div className="text-center p-8 bg-white rounded-2xl shadow-lg">
             <div className="text-4xl font-bold text-purple-600 mb-2">30</div>
-            <div className="text-gray-700 font-medium">Yıllık Deneyim</div>
+            <div className="text-gray-700 font-medium">{t('references.stats.experience')}</div>
           </div>
         </div>
 
@@ -79,9 +81,9 @@ const References = () => {
           <div className="bg-gradient-to-r from-orange-500 to-blue-600 rounded-3xl p-12 text-white">
             <div className="text-6xl mb-6">💬</div>
             <blockquote className="text-2xl font-medium mb-6 italic">
-              "AKC Mekanik İnşaat ile çalışmak bizim için her zaman güvenilir ve kaliteli hizmet almak anlamına geliyor. Profesyonel ekipleri ve zamanında teslimat konusundaki başarıları takdire şayan."
+              {t('references.testimonial.quote')}
             </blockquote>
-            <div className="font-bold text-xl">- Kurumsal Müşteri</div>
+            <div className="font-bold text-xl">{t('references.testimonial.author')}</div>
           </div>
         </div>
       </div>
